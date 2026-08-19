@@ -329,29 +329,30 @@ img {
 }
 
 /* Hero Background Images (visible behind glass) */
+/* ✅ FIXED: Removed leading slash for GitHub Pages compatibility */
 .hero-home {
     background:
-        url('/images/hero-home.jpg') center / cover no-repeat;
+        url('images/hero-home.jpg') center / cover no-repeat;
 }
 
 .hero-origins {
     background:
-        url('/images/hero-origins.jpg') center / cover no-repeat;
+        url('images/hero-origins.jpg') center / cover no-repeat;
 }
 
 .hero-growth {
     background:
-        url('/images/hero-growth.jpg') center / cover no-repeat;
+        url('images/hero-growth.jpg') center / cover no-repeat;
 }
 
 .hero-smartnation {
     background:
-        url('/images/hero-smartnation.jpg') center / cover no-repeat;
+        url('images/hero-smartnation.jpg') center / cover no-repeat;
 }
 
 .hero-timeline {
     background:
-        url('/images/hero-timeline.jpg') center / cover no-repeat;
+        url('images/hero-timeline.jpg') center / cover no-repeat;
 }
 
 /* Glassmorphism Container */
