@@ -1,0 +1,36 @@
+{
+  "statistics": [
+    {
+      "id": "s001",
+      "label": "Internet Penetration",
+      "value": "92%",
+      "year": 2024,
+      "source": "IMDA",
+      "sourceUrl": "https://www.imda.gov.sg"
+    },
+    {
+      "id": "s002",
+      "label": "Broadband Speed",
+      "value": "10 Gbps",
+      "year": 2024,
+      "source": "IMDA",
+      "sourceUrl": "https://www.imda.gov.sg"
+    },
+    {
+      "id": "s003",
+      "label": "Mobile Subscribers",
+      "value": "5.5M",
+      "year": 2024,
+      "source": "IMDA",
+      "sourceUrl": "https://www.imda.gov.sg"
+    },
+    {
+      "id": "s004",
+      "label": "Singpass Users",
+      "value": "5M+",
+      "year": 2024,
+      "source": "GovTech",
+      "sourceUrl": "https://www.tech.gov.sg"
+    }
+  ]
+}

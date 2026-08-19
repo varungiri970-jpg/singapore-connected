@@ -1,0 +1,84 @@
+{
+  "milestones": [
+    {
+      "id": "m001",
+      "year": 1981,
+      "title": "National Computer Board",
+      "summary": "Established to spearhead Singapore's computerisation.",
+      "icon": "🏛️",
+      "page": "origins"
+    },
+    {
+      "id": "m002",
+      "year": 1987,
+      "title": "NUS BITNET Connection",
+      "summary": "First permanent BITNET node in Southeast Asia.",
+      "icon": "📡",
+      "page": "origins"
+    },
+    {
+      "id": "m003",
+      "year": 1991,
+      "title": "TechNet",
+      "summary": "Singapore's first Internet service provider.",
+      "icon": "🌐",
+      "page": "origins"
+    },
+    {
+      "id": "m004",
+      "year": 1994,
+      "title": "SingNet",
+      "summary": "First commercial ISP for the public.",
+      "icon": "📱",
+      "page": "origins"
+    },
+    {
+      "id": "m005",
+      "year": 1997,
+      "title": "Singapore ONE",
+      "summary": "World's first nationwide broadband network.",
+      "icon": "🚀",
+      "page": "growth"
+    },
+    {
+      "id": "m006",
+      "year": 2003,
+      "title": "Singpass",
+      "summary": "National digital identity system launched.",
+      "icon": "🆔",
+      "page": "growth"
+    },
+    {
+      "id": "m007",
+      "year": 2006,
+      "title": "Wireless@SG",
+      "summary": "First nationwide free Wi-Fi network.",
+      "icon": "📶",
+      "page": "growth"
+    },
+    {
+      "id": "m008",
+      "year": 2010,
+      "title": "Next Gen NBN",
+      "summary": "All-fibre broadband with 1 Gbps speeds.",
+      "icon": "🔌",
+      "page": "smart-nation"
+    },
+    {
+      "id": "m009",
+      "year": 2014,
+      "title": "Smart Nation",
+      "summary": "National digital transformation vision launched.",
+      "icon": "🏙️",
+      "page": "smart-nation"
+    },
+    {
+      "id": "m010",
+      "year": 2024,
+      "title": "Smart Nation 2.0",
+      "summary": "Refreshed vision: Trust, Growth, Community.",
+      "icon": "✨",
+      "page": "smart-nation"
+    }
+  ]
+}

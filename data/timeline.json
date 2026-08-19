@@ -1,0 +1,224 @@
+{
+  "timeline": [
+    {
+      "year": 1981,
+      "title": "National Computer Board Established",
+      "category": "Government",
+      "description": "The National Computer Board was established on 1 September 1981 to spearhead Singapore's computerisation and launched the Civil Service Computerisation Programme.",
+      "significance": "Marked the beginning of Singapore's digital transformation journey.",
+      "source": "GovTech Singapore",
+      "sourceUrl": "https://www.tech.gov.sg",
+      "page": "origins"
+    },
+    {
+      "year": 1987,
+      "title": "NUS Connects to BITNET",
+      "category": "Academic",
+      "description": "In January 1987, NUS became the first permanent BITNET node in Southeast Asia outside Japan, connecting to over 600 universities worldwide.",
+      "significance": "Put Singapore on the international academic networking map.",
+      "source": "GovTech Singapore",
+      "sourceUrl": "https://www.tech.gov.sg",
+      "page": "origins"
+    },
+    {
+      "year": 1990,
+      "title": "NUS Achieves First Internet Connection",
+      "category": "Academic",
+      "description": "NUS achieved Singapore's first full connection to the global Internet.",
+      "significance": "Singapore joined the global Internet community.",
+      "source": "GovTech Singapore",
+      "sourceUrl": "https://www.tech.gov.sg",
+      "page": "origins"
+    },
+    {
+      "year": 1991,
+      "title": "NUSNET Officially Launched",
+      "category": "Academic",
+      "description": "On 11 April 1991, NUSNET was launched — a campus-wide fibre network connecting NUS to more than 3,000 institutions worldwide.",
+      "significance": "Established one of the most advanced academic networks in Asia.",
+      "source": "National University of Singapore",
+      "sourceUrl": "https://lib.nus.edu.sg",
+      "page": "origins"
+    },
+    {
+      "year": 1991,
+      "title": "TechNet Established",
+      "category": "Academic",
+      "description": "The National Science and Technology Board established TechNet as Singapore's first Internet service provider.",
+      "significance": "Singapore's first ISP laid the groundwork for commercial Internet.",
+      "source": "Pacific Internet",
+      "sourceUrl": "https://www.pacificinternet.com",
+      "page": "origins"
+    },
+    {
+      "year": 1992,
+      "title": "IT2000 Masterplan Adopted",
+      "category": "Government",
+      "description": "The IT2000 masterplan was adopted by the Singapore Cabinet, envisioning an 'Intelligent Island'.",
+      "significance": "First comprehensive national blueprint for Singapore's IT future.",
+      "source": "IEEE Xplore",
+      "sourceUrl": "https://ieeexplore.ieee.org",
+      "page": "origins"
+    },
+    {
+      "year": 1994,
+      "title": "SingNet Launched",
+      "category": "Commercial",
+      "description": "In July 1994, Singtel launched SingNet — Singapore's first commercial ISP.",
+      "significance": "Democratised Internet access for millions of Singaporeans.",
+      "source": "ITU",
+      "sourceUrl": "https://www.itu.int",
+      "page": "origins"
+    },
+    {
+      "year": 1995,
+      "title": "Pacific Internet Formed",
+      "category": "Commercial",
+      "description": "Sembawang Media purchased TechNet and formed Pacific Internet, later the first Asian ISP to list on NASDAQ.",
+      "significance": "Demonstrated commercial viability of Internet services in Singapore.",
+      "source": "South China Morning Post",
+      "sourceUrl": "https://www.scmp.com",
+      "page": "origins"
+    },
+    {
+      "year": 1996,
+      "title": "Cyberway Begins Operations",
+      "category": "Commercial",
+      "description": "Cyberway launched as Singapore's third major ISP, later acquired by StarHub in 1999.",
+      "significance": "Increased competition and expanded consumer choice.",
+      "source": "DR-NTU",
+      "sourceUrl": "https://dr.ntu.edu.sg",
+      "page": "origins"
+    },
+    {
+      "year": 1997,
+      "title": "Singapore ONE Launched",
+      "category": "Infrastructure",
+      "description": "On 9 June 1997, PM Goh Chok Tong launched Singapore ONE — the world's first nationwide broadband network.",
+      "significance": "Pioneered residential broadband and digital services.",
+      "source": "DR-NTU",
+      "sourceUrl": "https://dr.ntu.edu.sg",
+      "page": "growth"
+    },
+    {
+      "year": 2000,
+      "title": "Infocomm 21 Masterplan Launched",
+      "category": "Government",
+      "description": "Launched in December 2000, Infocomm 21 set a five-year vision to transform Singapore into a global Infocomm Capital.",
+      "significance": "Established Singapore's ambition to become a global technology hub.",
+      "source": "IMDA",
+      "sourceUrl": "https://www.imda.gov.sg",
+      "page": "growth"
+    },
+    {
+      "year": 2003,
+      "title": "Singpass Launched",
+      "category": "Government",
+      "description": "In March 2003, Singapore launched Singpass — the national digital identity system.",
+      "significance": "Revolutionised government service delivery.",
+      "source": "Smart Nation",
+      "sourceUrl": "https://www.smartnation.gov.sg",
+      "page": "growth"
+    },
+    {
+      "year": 2006,
+      "title": "iN2015 Masterplan Launched",
+      "category": "Government",
+      "description": "In June 2006, Singapore launched iN2015 — a S$3.2 billion, 10-year masterplan.",
+      "significance": "Prepared Singapore for the digital age.",
+      "source": "IMDA",
+      "sourceUrl": "https://www.imda.gov.sg",
+      "page": "growth"
+    },
+    {
+      "year": 2006,
+      "title": "Wireless@SG Launched",
+      "category": "Infrastructure",
+      "description": "In December 2006, Singapore launched Wireless@SG — one of the first nationwide free Wi-Fi networks.",
+      "significance": "Promoted a connected lifestyle in Singapore.",
+      "source": "APNIC Blog",
+      "sourceUrl": "https://blog.apnic.net",
+      "page": "growth"
+    },
+    {
+      "year": 2010,
+      "title": "Next Generation NBN Launched",
+      "category": "Infrastructure",
+      "description": "In August 2010, Singapore's Next Generation National Broadband Network began commercial operations with 1 Gbps speeds.",
+      "significance": "Singapore joined global leaders in broadband connectivity.",
+      "source": "World Bank",
+      "sourceUrl": "https://ppp.worldbank.org",
+      "page": "smart-nation"
+    },
+    {
+      "year": 2014,
+      "title": "Smart Nation Vision Launched",
+      "category": "Government",
+      "description": "On 24 November 2014, PM Lee Hsien Loong launched the Smart Nation vision.",
+      "significance": "Singapore's most ambitious digital transformation strategy.",
+      "source": "PMO",
+      "sourceUrl": "https://www.pmo.gov.sg",
+      "page": "smart-nation"
+    },
+    {
+      "year": 2016,
+      "title": "GovTech Formed",
+      "category": "Government",
+      "description": "In October 2016, the Government Technology Agency was established.",
+      "significance": "Created a dedicated agency for government digital transformation.",
+      "source": "GovTech",
+      "sourceUrl": "https://www.tech.gov.sg",
+      "page": "smart-nation"
+    },
+    {
+      "year": 2017,
+      "title": "SNDGO Established",
+      "category": "Government",
+      "description": "On 1 May 2017, the Smart Nation and Digital Government Office was established under the PMO.",
+      "significance": "Centralised Smart Nation strategy and decision-making.",
+      "source": "MDDI",
+      "sourceUrl": "https://www.mddi.gov.sg",
+      "page": "smart-nation"
+    },
+    {
+      "year": 2017,
+      "title": "PayNow Launched",
+      "category": "Commercial",
+      "description": "On 10 July 2017, Singapore launched PayNow — an instant peer-to-peer fund transfer system.",
+      "significance": "Revolutionised digital payments in Singapore.",
+      "source": "Smart Nation",
+      "sourceUrl": "https://www.smartnation.gov.sg",
+      "page": "smart-nation"
+    },
+    {
+      "year": 2019,
+      "title": "National AI Strategy Unveiled",
+      "category": "Government",
+      "description": "On 13 November 2019, Singapore unveiled its National AI Strategy 1.0.",
+      "significance": "Positioned Singapore as a global AI leader.",
+      "source": "MDDI",
+      "sourceUrl": "https://www.mddi.gov.sg",
+      "page": "smart-nation"
+    },
+    {
+      "year": 2020,
+      "title": "5G Licences Awarded",
+      "category": "Infrastructure",
+      "description": "In June 2020, Singapore awarded 5G licences to Singtel and a StarHub-M1 joint venture.",
+      "significance": "Began nationwide 5G rollout for IoT and smart city services.",
+      "source": "Singtel",
+      "sourceUrl": "https://www.singtel.com",
+      "page": "smart-nation"
+    },
+    {
+      "year": 2024,
+      "title": "Smart Nation 2.0 Launched",
+      "category": "Government",
+      "description": "On 1 October 2024, PM Lawrence Wong launched Smart Nation 2.0 — Trust, Growth, Community.",
+      "significance": "Next phase of digital transformation with human-centric focus.",
+      "source": "PMO",
+      "sourceUrl": "https://www.pmo.gov.sg",
+      "page": "smart-nation"
+    }
+  ]
+}
