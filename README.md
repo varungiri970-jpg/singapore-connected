@@ -2,7 +2,7 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,8,16&height=200&section=header&text=Singapore%20Connected&fontSize=72&fontColor=fff&animation=twinkling&fontAlignY=35&desc=The%20Evolution%20of%20the%20Internet%20in%20Singapore&descAlignY=55&descSize=15" width="100%"/>
 
-[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=20&pause=1000&color=00D4FF&center=true&vCenter=true&multiline=true&width=1600&height=60&lines=Singapore+Connected+%7C+1981–2026+%7C+5+Pages+%7C+20+Milestones)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=20&pause=1000&color=E02A3E&center=true&vCenter=true&multiline=true&width=1600&height=60&lines=Singapore+Connected+%7C+1981%E2%80%932026+%7C+5+Pages+%7C+22+Milestones)](https://git.io/typing-svg)
 
 <br/>
 
@@ -15,13 +15,13 @@
 <br/>
 
 [![Pages](https://img.shields.io/badge/5-Pages-brightgreen?style=for-the-badge)]()
-[![Responsive](https://img.shields.io/badge/Responsive-Yes-00D4FF?style=for-the-badge)]()
-[![Accessible](https://img.shields.io/badge/Accessible-WCAG%20AA-FF6B9D?style=for-the-badge)]()
+[![Responsive](https://img.shields.io/badge/Responsive-Yes-E02A3E?style=for-the-badge)]()
+[![Accessible](https://img.shields.io/badge/Accessible-WCAG%20AA-8B0000?style=for-the-badge)]()
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)]()
 
 <br/>
 
-> **🌐 Singapore Connected** — An educational website tracing Singapore's internet history from the first BITNET connection in 1987 to 5G and Smart Nation 2.0 in 2026, with dynamic JSON-driven content and a fully responsive dark-themed design.
+> **🌐 Singapore Connected** — An educational website tracing Singapore's internet history from the first BITNET connection in 1987 to 5G and Smart Nation 2.0 in 2026, with dynamic JSON-driven content and a fully responsive red and white design inspired by the Singapore flag.
 
 <br/>
 
@@ -75,7 +75,7 @@ Singapore Connected               →   Dynamic JSON-driven timeline, responsive
 
 - 🎯 **Dynamic content rendering** using JSON data and a custom JavaScript template engine
 - 📱 **Fully responsive design** (desktop, tablet, mobile)
-- ♿ **WCAG AA accessibility** compliance
+- ♿ **WCAG AA accessibility** compliance (90/100 Lighthouse score)
 - 🧹 **Clean, well-organised code** with semantic HTML5, CSS3, and ES6 JavaScript
 - ✅ **JSON validation** before rendering dynamic content
 
@@ -83,6 +83,12 @@ Singapore Connected               →   Dynamic JSON-driven timeline, responsive
 > 📅 **Academic Year:** 2025–2026  
 > 🧠 **Module:** CM1040 Web Development  
 > 🌍 **Country:** Singapore
+
+---
+
+## 🚀 Live Demo
+
+🔗 **View the live website:** [https://varungiri970-jpg.github.io/singapore-connected/](https://varungiri970-jpg.github.io/singapore-connected/)
 
 ---
 
@@ -97,14 +103,14 @@ Singapore Connected               →   Dynamic JSON-driven timeline, responsive
 | Origins | From BITNET to Broadband | 1981–1996 | Academic networks, first ISPs, IT2000 |
 | Growth | Broadband & Beyond | 1997–2009 | Singapore ONE, wireless, Singpass |
 | Smart Nation | Building a Smart Nation | 2010–2026 | Fibre, Smart Nation, 5G, AI |
-| Timeline | Interactive Timeline | 1981–2026 | All 20 milestones in one view |
+| Timeline | Interactive Timeline | 1981–2026 | All 22 milestones in one view |
 
 </details>
 
 <details>
 <summary><b>📊 Dynamic JSON-Driven Content</b></summary>
 
-- **Timeline** (`timeline.json`) — 20 verified milestones
+- **Timeline** (`timeline.json`) — 22 verified milestones with full source citations
 - **Statistics** (`statistics.json`) — 4 key metrics
 - **Milestones** (`milestones.json`) — 10 featured events
 - Custom JavaScript template engine (`renderer.js`)
@@ -113,14 +119,14 @@ Singapore Connected               →   Dynamic JSON-driven timeline, responsive
 </details>
 
 <details>
-<summary><b>🎨 Modern Design System</b></summary>
+<summary><b>🎨 Design System (Singapore Flag Colors)</b></summary>
 
-- **Dark Navy Foundation** — `#0A1128` (primary), `#1A233A` (secondary)
-- **Singapore Red Accent** — `#E02A3E` (headlines, CTAs)
-- **Electric Cyan** — `#00D4FF` (links, tech accents)
-- **Glassmorphism cards** used sparingly
-- **Inter** typography (Google Fonts)
-- Professional, academic, technology aesthetic
+- **White Foundation** — `#FFFFFF` background with `#1A0000` dark text
+- **Singapore Red** — `#E02A3E` (headlines, CTAs, highlights)
+- **Dark Red** — `#8B0000` (footer, secondary accents)
+- **Subtle Pink Background** — `#FFF5F5` (alt sections)
+- **Glassmorphism** hero panels — `backdrop-filter: blur(16px)` for text readability
+- **Playfair Display** headings + **Inter** body typography (Google Fonts)
 
 </details>
 
@@ -150,25 +156,17 @@ Singapore Connected               →   Dynamic JSON-driven timeline, responsive
 
 ## 🏗️ System Architecture
 
-<div align="center">
-
-![Architecture](docs/architecture.png)
-
-*JSON data → Validation → Template Engine → Dynamic HTML Rendering*
-
-</div>
-
 ### 🧩 Component Summary
 
 | Component | File | Technology | Purpose |
 |-----------|------|-----------|---------|
 | **HTML Pages** | `*.html` | HTML5 | 5 semantic pages |
-| **Styling** | `css/style.css` | CSS3 | Dark theme, responsive, accessible |
+| **Styling** | `css/style.css` | CSS3 | Red & white theme, responsive, accessible |
 | **App Orchestrator** | `js/app.js` | Vanilla JS | Fetch, validate, render, init |
 | **Template Engine** | `js/renderer.js` | Vanilla JS | Custom engine: JSON → HTML |
 | **Validator** | `js/validator.js` | Vanilla JS | JSON validation (fields, types, URLs) |
 | **Router** | `js/router.js` | Vanilla JS | Page detection, hamburger toggle |
-| **Timeline Data** | `data/timeline.json` | JSON | 20 verified milestones |
+| **Timeline Data** | `data/timeline.json` | JSON | 22 verified milestones |
 | **Milestones Data** | `data/milestones.json` | JSON | 10 featured events |
 | **Statistics Data** | `data/statistics.json` | JSON | 4 key metrics |
 
@@ -203,40 +201,22 @@ DOM: container.innerHTML = HTML
 <div align="center">
 
 ### 🏠 Home Page
-
-| Hero Section | Key Milestones |
-|-------------|----------------|
-| ![Home Hero](docs/screenshots/home-hero.png) | ![Timeline](docs/screenshots/home-timeline.png) |
+![Home Page](documents/Screenshot/Home-Page.png)
 
 ### 📜 Origins Page
-
-| Hero | Timeline |
-|------|----------|
-| ![Origins](docs/screenshots/origins-hero.png) | ![Origins Timeline](docs/screenshots/origins-timeline.png) |
+![Origins Page](documents/Screenshot/Origins-Page.png)
 
 ### 📈 Growth Page
-
-| Hero | Timeline |
-|------|----------|
-| ![Growth](docs/screenshots/growth-hero.png) | ![Growth Timeline](docs/screenshots/growth-timeline.png) |
+![Growth Page](documents/Screenshot/Growth-Page.png)
 
 ### 🏙️ Smart Nation Page
-
-| Hero | Timeline |
-|------|----------|
-| ![Smart Nation](docs/screenshots/smartnation-hero.png) | ![Smart Nation Timeline](docs/screenshots/smartnation-timeline.png) |
+![Smart Nation Page](documents/Screenshot/Smart-Nation-Page.png)
 
 ### 📅 Interactive Timeline
-
-| Full Timeline |
-|---------------|
-| ![Timeline](docs/screenshots/timeline-full.png) |
+![Interactive Timeline](documents/Screenshot/Interactive-Timeline.png)
 
 ### 📱 Mobile Responsive
-
-| Home Mobile | Hamburger Menu |
-|-------------|----------------|
-| ![Mobile](docs/screenshots/mobile-home.png) | ![Hamburger](docs/screenshots/mobile-menu.png) |
+![Mobile Responsive](documents/Screenshot/Mobile-Responsive.png)
 
 </div>
 
@@ -254,7 +234,7 @@ singapore-connected/
 ├── 📄 timeline.html              # Interactive Timeline
 │
 ├── 📁 css/
-│   └── 📄 style.css              # Complete styles (dark, responsive)
+│   └── 📄 style.css              # Complete styles (red & white, responsive)
 │
 ├── 📁 js/
 │   ├── 📄 app.js                 # Main orchestrator
@@ -263,18 +243,39 @@ singapore-connected/
 │   └── 📄 validator.js           # JSON validation
 │
 ├── 📁 data/
-│   ├── 📄 timeline.json          # 20 verified milestones
+│   ├── 📄 timeline.json          # 22 verified milestones
 │   ├── 📄 milestones.json        # 10 featured events
 │   └── 📄 statistics.json        # 4 key metrics
 │
-├── 📁 images/                    # Hero images for all pages
+├── 📁 images/
 │   ├── 📄 hero-home.jpg
 │   ├── 📄 hero-origins.jpg
 │   ├── 📄 hero-growth.jpg
 │   ├── 📄 hero-smartnation.jpg
-│   └── 📄 hero-timeline.jpg
+│   ├── 📄 hero-timeline.jpg
+│   ├── 📄 icon.png
+│   ├── 📄 icon-1.png
+│   └── 📄 Singapore-Map-Flag.png
 │
-├── 📄 favicon.ico                # Singapore-themed favicon
+├── 📁 documents/
+│   ├── 📁 Report/
+│   │   ├── 📄 Lighthouse-Report-Viewer-PC.pdf
+│   │   └── 📄 Lighthouse-Report-Viewer-Mobile.pdf
+│   ├── 📁 Screenshot/
+│   │   ├── 📄 Home-Page.png
+│   │   ├── 📄 Origins-Page.png
+│   │   ├── 📄 Growth-Page.png
+│   │   ├── 📄 Smart-Nation-Page.png
+│   │   ├── 📄 Interactive-Timeline.png
+│   │   └── 📄 Mobile-Responsive.png
+│   └── 📁 Wireframe/
+│       ├── 📄 visily-home.png
+│       ├── 📄 visily-origins.png
+│       ├── 📄 visily-growth.png
+│       ├── 📄 visily-smart-nation.png
+│       └── 📄 visily-timeline.png
+│
+├── 📄 favicon.ico
 ├── 📄 .gitignore
 └── 📄 README.md                  # This file
 ```
@@ -306,11 +307,11 @@ code .
 # The site will open at http://localhost:5500
 ```
 
+> **Important:** Always open via Live Server, not by double-clicking the HTML file. JSON data loads via HTTP — file:// will not work.
+
 ### 2️⃣ GitHub Pages Deployment
 
 ```bash
-# Create repository on GitHub
-# Push the project
 git init
 git add .
 git commit -m "Initial commit — Singapore Connected"
@@ -328,33 +329,56 @@ git push -u origin main
 
 ---
 
-## ✅ Testing Checklist
+## ✅ Testing Results
+
+### HTML Validation — W3C Nu HTML Checker
+
+| Page | Result |
+|------|--------|
+| `index.html` | ✅ 0 errors |
+| `origins.html` | ✅ 0 errors |
+| `growth.html` | ✅ 0 errors |
+| `smart-nation.html` | ✅ 0 errors |
+| `timeline.html` | ✅ 0 errors |
+
+**Live Validation:** [https://validator.w3.org/nu/?doc=https://varungiri970-jpg.github.io/singapore-connected/index.html](https://validator.w3.org/nu/?doc=https://varungiri970-jpg.github.io/singapore-connected/index.html)
+
+### Accessibility & Performance — Lighthouse
+
+**Desktop Results:**
+
+| Page | Performance | Accessibility | Best Practices | SEO |
+|------|-------------|---------------|----------------|-----|
+| index.html | 80 | 90 | 100 | 100 |
+| origins.html | 97 | 90 | 100 | 100 |
+| growth.html | 92 | 90 | 100 | 100 |
+| smart-nation.html | 84 | 90 | 100 | 100 |
+| timeline.html | 92 | 90 | 100 | 100 |
+
+**Mobile Results:**
+
+| Page | Performance | Accessibility | Best Practices | SEO |
+|------|-------------|---------------|----------------|-----|
+| index.html | 74 | 90 | 100 | 100 |
+| origins.html | 79 | 90 | 100 | 100 |
+| growth.html | 74 | 90 | 100 | 100 |
+| smart-nation.html | 74 | 90 | 100 | 100 |
+| timeline.html | 74 | 90 | 100 | 100 |
+
+Full reports: `documents/Report/Lighthouse-Report-Viewer-PC.pdf` and `documents/Report/Lighthouse-Report-Viewer-Mobile.pdf`
+
+### Testing Checklist
 
 | Test | Tool | Status |
 |------|------|--------|
-| HTML Validation | W3C Nu HTML Checker | ✅ Passed |
-| Accessibility | WAVE / Lighthouse | ✅ Passed |
-| Responsive | Chrome DevTools (320–1920px) | ✅ Passed |
+| HTML Validation | W3C Nu HTML Checker | ✅ 0 errors |
+| Accessibility | Google Lighthouse | ✅ 90/100 |
+| Best Practices | Google Lighthouse | ✅ 100/100 |
+| SEO | Google Lighthouse | ✅ 100/100 |
+| Responsive Design | Chrome DevTools | ✅ Passed |
 | Console Errors | Browser DevTools | ✅ None |
 | JSON Validation | Browser Console | ✅ Passed |
 | GitHub Pages | Live URL | ✅ Working |
-
----
-
-## 📊 Features Summary
-
-| Feature | Status |
-|---------|--------|
-| 5 Pages | ✅ |
-| Responsive Desktop | ✅ |
-| Responsive Mobile | ✅ |
-| Dynamic JSON Content | ✅ |
-| JSON Validation | ✅ |
-| Custom Template Engine | ✅ |
-| Semantic HTML | ✅ |
-| WCAG AA Accessibility | ✅ |
-| GitHub Pages Compatible | ✅ |
-| Clean, Commented Code | ✅ |
 
 ---
 
@@ -370,7 +394,7 @@ git push -u origin main
 | NUS | National University of Singapore | nus.edu.sg |
 | PMO | Prime Minister's Office | pmo.gov.sg |
 
-### 20 Verified Milestones
+### 22 Verified Milestones
 
 See `data/timeline.json` for complete source URLs for each milestone.
 
@@ -386,9 +410,7 @@ See `data/timeline.json` for complete source URLs for each milestone.
 <tr>
 <td align="center" width="300">
 
-<img src="https://avatars.githubusercontent.com/u/varungiri970-jpg" width="150" height="150" style="border-radius:50%;border:4px solid #00D4FF;"/>
-
-<br/><br/>
+<br/>
 
 ### **VARUN.G**
 
@@ -402,12 +424,10 @@ See `data/timeline.json` for complete source URLs for each milestone.
 | 📅 **Academic Year** | 2025–2026 |
 | 📚 **Module** | CM1040 Web Development |
 | 🌐 **GitHub** | [varungiri970-jpg](https://github.com/varungiri970-jpg) |
-| 📧 **Email** | [VARUN.G@SIM.edu.sg]() |
 
 <br/>
 
 [![GitHub](https://img.shields.io/badge/GitHub-varungiri970--jpg-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/varungiri970-jpg)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-VARUN.G-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()
 
 </td>
 </tr>
@@ -431,7 +451,7 @@ See `data/timeline.json` for complete source URLs for each milestone.
 
 </div>
 
-This project was created for **CM1040 Web Development** coursework at the **Singapore Institute of Management (SIM)** .
+This project was created for **CM1040 Web Development** coursework at the **Singapore Institute of Management (SIM)**.
 
 ### ❌ You MAY NOT:
 
@@ -446,8 +466,6 @@ This project was created for **CM1040 Web Development** coursework at the **Sing
 - Fork on GitHub solely for personal learning
 - Reference this project in academic citations with proper attribution
 
-> For licensing inquiries: [VARUN.G@SIM.edu.sg]()
-
 ---
 
 ## 🙏 Acknowledgments
@@ -461,6 +479,18 @@ This project was created for **CM1040 Web Development** coursework at the **Sing
 | **BSc Computer Science (Physical Computing & IoT)** | Programme |
 
 </div>
+
+---
+
+## 🔗 Important Links
+
+| Resource | URL |
+|----------|-----|
+| **Live Demo** | https://varungiri970-jpg.github.io/singapore-connected/ |
+| **GitHub Repository** | https://github.com/varungiri970-jpg/singapore-connected |
+| **HTML Validation** | https://validator.w3.org/nu/?doc=https://varungiri970-jpg.github.io/singapore-connected/index.html |
+| **Visily Wireframes** | https://app.visily.ai/projects/24a26e2d-5b8c-4ee6-b74d-65b0fcf52f70/boards/2697893 |
+| **Feedback Form** | https://forms.gle/PJz7v57D9GJXUCw4A |
 
 ---
 
@@ -479,7 +509,5 @@ This project was created for **CM1040 Web Development** coursework at the **Sing
 *Made with ❤️ for the CM1040 Web Development coursework · Singapore Institute of Management · Singapore 🇸🇬*
 
 <br/>
-
-**📅 Deadline:** 13 September 2026
 
 </div>
