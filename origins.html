@@ -3,35 +3,37 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Origins of the Internet in Singapore — 1981 to 1996. From BITNET to the first commercial ISPs." />
-    <title>Origins — Singapore Connected</title>
-
-    <!-- FAVICON — using favicon.ico -->
+    <meta name="description" content="Origins — From BITNET to Broadband — Singapore Connected. Trace Singapore's internet history from 1981 to 2026." />
+    <meta name="theme-color" content="#ED2939" />
+    <meta property="og:title" content="Origins — From BITNET to Broadband — Singapore Connected" />
+    <meta property="og:description" content="Trace Singapore's digital journey from BITNET in 1987 to Smart Nation 2.0 in 2026." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/hero-origins.jpg" />
+    <title>Origins — From BITNET to Broadband — Singapore Connected</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-
-    <!-- Google Fonts — Playfair Display for premium serif headings + Inter for body -->
+    <link rel="apple-touch-icon" href="images/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
 
-    <!-- ===== HEADER ===== -->
     <header class="site-header" role="banner" aria-label="Site header">
         <div class="container header-inner">
             <div class="logo">
                 <a href="index.html" aria-label="Singapore Connected home">
-                    <img src="images/icon.png" alt="Singapore Flag Logo" class="logo-img" />
+                    <img src="images/icon.png" alt="Singapore Flag Logo" class="logo-img" loading="eager" decoding="async" />
                     <span class="logo-text">Singapore <span class="logo-highlight">Connected</span></span>
                 </a>
             </div>
             <nav class="nav-desktop" aria-label="Main navigation">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="origins.html" class="active">Origins</a></li>
+                    <li><a href="origins.html" class="active" aria-current="page">Origins</a></li>
                     <li><a href="growth.html">Growth</a></li>
                     <li><a href="smart-nation.html">Smart Nation</a></li>
                     <li><a href="timeline.html">Timeline</a></li>
@@ -46,7 +48,7 @@
         <nav class="nav-mobile" id="mobileNav" aria-label="Mobile navigation" hidden>
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li><a href="origins.html" class="active">Origins</a></li>
+                <li><a href="origins.html" class="active" aria-current="page">Origins</a></li>
                 <li><a href="growth.html">Growth</a></li>
                 <li><a href="smart-nation.html">Smart Nation</a></li>
                 <li><a href="timeline.html">Timeline</a></li>
@@ -54,30 +56,24 @@
         </nav>
     </header>
 
-    <main>
-
-        <!-- ===== HERO SECTION ===== -->
+    <main id="mainContent">
         <section class="hero hero-origins" aria-labelledby="heroTitle">
-            <div class="hero-pattern"></div>
-            <div class="container hero-content">
+            <div class="container hero-content scroll-animate">
                 <div class="hero-badge">
-                    <img src="images/Singapore-Map-Flag.png" alt="Singapore Flag" class="hero-badge-img" />
-                    <span class="hero-badge-text">Origins</span>
+                    <img src="images/Singapore-Map-Flag.png" alt="Singapore Flag" class="hero-badge-img" loading="eager" decoding="async" />
+                    <span class="hero-badge-text">Singapore</span>
                 </div>
                 <p class="hero-eyebrow">1981 – 1996</p>
                 <h1 id="heroTitle">From <span class="hero-highlight">BITNET</span> to Broadband</h1>
                 <p class="hero-subtitle">The Origins of Singapore's Internet</p>
                 <div class="hero-divider"></div>
-                <p class="hero-description">
-                    Singapore's internet story begins in the lecture halls and laboratories of
-                    the National University of Singapore, where the first connections to global
-                    networks laid the foundation for a digital revolution.
-                </p>
+                <p class="hero-description">Singapore's internet story begins in the lecture halls and laboratories of the National University of Singapore, where the first connections to global networks laid the foundation for a digital revolution.</p>
+                
             </div>
         </section>
 
-        <!-- ===== NARRATIVE — Academic Genesis ===== -->
-        <section class="section" aria-labelledby="narrativeTitle">
+        <!-- Academic Genesis -->
+        <section class="section scroll-animate" aria-labelledby="narrativeTitle">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">The Beginning</span>
@@ -86,42 +82,25 @@
                 </div>
                 <div class="narrative-grid">
                     <div class="narrative-text">
-                        <div class="narrative-item">
+                        <div class="narrative-item scroll-animate delay-1">
                             <span class="narrative-year">1981</span>
                             <h3>National Computer Board</h3>
-                            <p>
-                                Singapore's digital journey officially began on 1 September 1981 with the
-                                establishment of the National Computer Board (NCB). Tasked with spearheading
-                                the nation's computerisation, the NCB launched the Civil Service Computerisation
-                                Programme, digitising government services and laying the groundwork for
-                                Singapore's future as a technology leader.
-                            </p>
+                            <p>Singapore's digital journey officially began on 1 September 1981 with the establishment of the National Computer Board (NCB). Tasked with spearheading the nation's computerisation, the NCB launched the Civil Service Computerisation Programme, digitising government services and laying the groundwork for Singapore's future as a technology leader.</p>
                         </div>
-                        <div class="narrative-item">
+                        <div class="narrative-item scroll-animate delay-2">
                             <span class="narrative-year">1987</span>
                             <h3>NUS Connects to BITNET</h3>
-                            <p>
-                                In January 1987, the National University of Singapore achieved a historic
-                                milestone by becoming the first permanent BITNET node in Southeast Asia
-                                outside Japan. This connection allowed NUS researchers to communicate
-                                directly with over 600 universities worldwide.
-                            </p>
+                            <p>In January 1987, the National University of Singapore achieved a historic milestone by becoming the first permanent BITNET node in Southeast Asia outside Japan. This connection allowed NUS researchers to communicate directly with over 600 universities worldwide.</p>
                         </div>
-                        <div class="narrative-item">
+                        <div class="narrative-item scroll-animate delay-3">
                             <span class="narrative-year">1990</span>
                             <h3>First Internet Connection</h3>
-                            <p>
-                                By 1990, NUS had secured Singapore's first full connection to the global
-                                Internet, opening doors to unprecedented research collaboration and
-                                information access. The NUSNET campus network, officially launched on
-                                11 April 1991, connected the university to more than 3,000 institutions
-                                worldwide via fibre-optic cable.
-                            </p>
+                            <p>By 1990, NUS had secured Singapore's first full connection to the global Internet, opening doors to unprecedented research collaboration and information access. The NUSNET campus network, officially launched on 11 April 1991, connected the university to more than 3,000 institutions worldwide via fibre-optic cable.</p>
                         </div>
                     </div>
-                    <div class="narrative-image">
+                    <div class="narrative-image scroll-animate delay-2">
                         <div class="image-placeholder" role="img" aria-label="NUS campus historical image">
-                            <span>📚 NUS Campus — 1980s</span>
+                            <span>&#128218; NUS Campus — 1980s</span>
                         </div>
                         <p class="image-caption">National University of Singapore, where the internet first arrived in 1987.</p>
                     </div>
@@ -129,8 +108,8 @@
             </div>
         </section>
 
-        <!-- ===== FIRST ISPs ===== -->
-        <section class="section section-alt" aria-labelledby="ispTitle">
+        <!-- First ISPs -->
+        <section class="section section-alt scroll-animate" aria-labelledby="ispTitle">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">The Pioneers</span>
@@ -139,26 +118,26 @@
                     <p class="section-subtitle">The companies that brought the Internet to the public</p>
                 </div>
                 <div class="card-grid">
-                    <div class="card">
-                        <div class="card-icon">🌐</div>
+                    <div class="card scroll-animate delay-1">
+                        <div class="card-icon">&#127760;</div>
                         <h3>TechNet</h3>
                         <p class="card-year">1991</p>
                         <p>Established by the National Science and Technology Board (NSTB), TechNet was Singapore's first Internet service provider, serving the research and education community.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">📱</div>
+                    <div class="card scroll-animate delay-2">
+                        <div class="card-icon">&#128241;</div>
                         <h3>SingNet</h3>
                         <p class="card-year">1994</p>
                         <p>Launched by Singtel in July 1994, SingNet brought commercial Internet access to the Singapore public for the first time.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">📈</div>
+                    <div class="card scroll-animate delay-3">
+                        <div class="card-icon">&#128200;</div>
                         <h3>Pacific Internet</h3>
                         <p class="card-year">1995</p>
                         <p>Formed when Sembawang Media purchased TechNet, Pacific Internet became a major ISP and later the first Asian ISP to list on NASDAQ.</p>
                     </div>
-                    <div class="card">
-                        <div class="card-icon">⚡</div>
+                    <div class="card scroll-animate delay-4">
+                        <div class="card-icon">&#9889;</div>
                         <h3>Cyberway</h3>
                         <p class="card-year">1996</p>
                         <p>Singapore's third major ISP, later acquired by StarHub in 1999, expanding competition in the consumer market.</p>
@@ -167,8 +146,8 @@
             </div>
         </section>
 
-        <!-- ===== TIMELINE ===== -->
-        <section class="section" id="timeline" aria-labelledby="timelineTitle">
+        <!-- Timeline -->
+        <section class="section scroll-animate" id="timeline" aria-labelledby="timelineTitle">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Chronology</span>
@@ -184,20 +163,18 @@
 
     </main>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="site-footer" role="contentinfo">
         <div class="container footer-inner">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="images/icon.png" alt="Singapore Flag" class="footer-logo-img" />
+                    <img src="images/icon.png" alt="Singapore Flag" class="footer-logo-img" loading="lazy" decoding="async" />
                     <span>Singapore Connected</span>
                 </div>
-                <p>A web project tracing Singapore's internet history.</p>
+                <p>A web project tracing Singapore's internet history from 1981 to 2026.</p>
                 <div class="footer-icons">
-                    <!-- Updated to use icon-1.png -->
-                    <img src="images/icon-1.png" alt="Singapore Institute of Management Logo" class="footer-icon" />
-                    <img src="images/icon.png" alt="Singapore Flag Icon" class="footer-icon" />
-                    <span>© 2026</span>
+                    <img src="images/icon-1.png" alt="SIM Logo" class="footer-icon" loading="lazy" decoding="async" />
+                    <img src="images/icon.png" alt="Singapore Flag" class="footer-icon" loading="lazy" decoding="async" />
+                    <span>&copy; 2026</span>
                 </div>
             </div>
             <div class="footer-col">
@@ -205,6 +182,7 @@
                 <ul>
                     <li><a href="https://www.tech.gov.sg" target="_blank" rel="noopener">GovTech</a></li>
                     <li><a href="https://www.imda.gov.sg" target="_blank" rel="noopener">IMDA</a></li>
+                    <li><a href="https://www.smartnation.gov.sg" target="_blank" rel="noopener">Smart Nation</a></li>
                     <li><a href="https://www.nus.edu.sg" target="_blank" rel="noopener">NUS</a></li>
                 </ul>
             </div>
@@ -224,11 +202,11 @@
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
     <script src="js/validator.js"></script>
     <script src="js/renderer.js"></script>
     <script src="js/router.js"></script>
     <script src="js/app.js"></script>
-
 </body>
 </html>
