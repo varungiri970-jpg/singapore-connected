@@ -1,16 +1,11 @@
 /* ============================================================
-   ROUTER — Navigation & hamburger menu
-   Note: active class is set in HTML per-page; this file
-   handles the hamburger toggle and exposes getCurrentPage().
+   ROUTER — Premium Edition
+   Hamburger, scroll spy, smooth scroll, keyboard nav
    ============================================================ */
 
 (function() {
     'use strict';
 
-    /**
-     * Derive the current page identifier from the URL pathname.
-     * @returns {'home'|'origins'|'growth'|'smart-nation'|'timeline'}
-     */
     function getCurrentPage() {
         const path = window.location.pathname;
         if (path.includes('origins'))      return 'origins';
@@ -20,48 +15,77 @@
         return 'home';
     }
 
-    /**
-     * Initialise the hamburger / mobile-nav toggle.
-     * Uses the `hidden` attribute (HTML boolean) to show/hide.
-     */
     function initHamburger() {
         const hamburgerBtn = document.getElementById('hamburgerBtn');
         const mobileNav = document.getElementById('mobileNav');
-
+        const overlay = document.getElementById('mobileOverlay');
         if (!hamburgerBtn || !mobileNav) return;
 
-        // Toggle on button click
-        hamburgerBtn.addEventListener('click', function() {
-            const isExpanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', String(!isExpanded));
-            mobileNav.hidden = isExpanded; // hide when it was open, show when it was closed
-        });
+        function openMenu() {
+            hamburgerBtn.setAttribute('aria-expanded', 'true');
+            mobileNav.classList.add('is-open');
+            mobileNav.hidden = false;
+            if (overlay) overlay.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeMenu() {
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            mobileNav.classList.remove('is-open');
+            if (overlay) overlay.classList.remove('is-active');
+            document.body.style.overflow = '';
+            setTimeout(() => { mobileNav.hidden = true; }, 400);
+        }
 
-        // Close when a nav link is clicked (user is navigating)
-        mobileNav.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                hamburgerBtn.setAttribute('aria-expanded', 'false');
-                mobileNav.hidden = true;
-            });
+        hamburgerBtn.addEventListener('click', () => {
+            mobileNav.classList.contains('is-open') ? closeMenu() : openMenu();
         });
-
-        // Close when clicking outside the header
-        document.addEventListener('click', function(event) {
-            const header = document.querySelector('.site-header');
-            if (header && !header.contains(event.target) && !mobileNav.hidden) {
-                hamburgerBtn.setAttribute('aria-expanded', 'false');
-                mobileNav.hidden = true;
-            }
+        mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
+        if (overlay) overlay.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) closeMenu();
         });
     }
 
-    // --- Run on DOM ready ---
-    document.addEventListener('DOMContentLoaded', function() {
+    function initSmoothScroll() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                const target = document.querySelector(targetId);
+                if (target) {
+                    e.preventDefault();
+                    const headerOffset = 80;
+                    const offsetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+                }
+            });
+        });
+    }
+
+    function initScrollSpy() {
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-desktop a, .nav-mobile a');
+        if (sections.length === 0) return;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.getAttribute('id');
+                    navLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${id}`) link.classList.add('active');
+                    });
+                }
+            });
+        }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
+        sections.forEach(section => observer.observe(section));
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
         initHamburger();
-        console.log(`📍 Router: current page is "${getCurrentPage()}"`);
+        initSmoothScroll();
+        initScrollSpy();
+        console.log(`Router: current page is "${getCurrentPage()}"`);
     });
 
-    // --- Expose ---
     window.getCurrentPage = getCurrentPage;
-
 })();
