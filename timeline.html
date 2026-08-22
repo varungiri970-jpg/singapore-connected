@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Complete interactive timeline of Singapore's internet history — 1981 to 2026." />
-    <title>Interactive Timeline — Singapore Connected</title>
-
-    <!-- FAVICON — using favicon.ico -->
+    <meta name="description" content="Interactive Timeline — Complete History — Singapore Connected. Trace Singapore's internet history from 1981 to 2026." />
+    <meta name="theme-color" content="#ED2939" />
+    <meta property="og:title" content="Interactive Timeline — Complete History — Singapore Connected" />
+    <meta property="og:description" content="Trace Singapore's digital journey from BITNET in 1987 to Smart Nation 2.0 in 2026." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/hero-timeline.jpg" />
+    <title>Interactive Timeline — Complete History — Singapore Connected</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-
-    <!-- Google Fonts — Playfair Display for premium serif headings + Inter for body -->
+    <link rel="apple-touch-icon" href="images/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
 
-    <!-- ===== HEADER ===== -->
     <header class="site-header" role="banner" aria-label="Site header">
         <div class="container header-inner">
             <div class="logo">
                 <a href="index.html" aria-label="Singapore Connected home">
-                    <img src="images/icon.png" alt="Singapore Flag Logo" class="logo-img" />
+                    <img src="images/icon.png" alt="Singapore Flag Logo" class="logo-img" loading="eager" decoding="async" />
                     <span class="logo-text">Singapore <span class="logo-highlight">Connected</span></span>
                 </a>
             </div>
@@ -34,7 +36,7 @@
                     <li><a href="origins.html">Origins</a></li>
                     <li><a href="growth.html">Growth</a></li>
                     <li><a href="smart-nation.html">Smart Nation</a></li>
-                    <li><a href="timeline.html" class="active">Timeline</a></li>
+                    <li><a href="timeline.html" class="active" aria-current="page">Timeline</a></li>
                 </ul>
             </nav>
             <button class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle navigation menu">
@@ -49,29 +51,23 @@
                 <li><a href="origins.html">Origins</a></li>
                 <li><a href="growth.html">Growth</a></li>
                 <li><a href="smart-nation.html">Smart Nation</a></li>
-                <li><a href="timeline.html" class="active">Timeline</a></li>
+                <li><a href="timeline.html" class="active" aria-current="page">Timeline</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-
-        <!-- ===== HERO SECTION ===== -->
+    <main id="mainContent">
         <section class="hero hero-timeline" aria-labelledby="heroTitle">
-            <div class="hero-pattern"></div>
-            <div class="container hero-content">
+            <div class="container hero-content scroll-animate">
                 <div class="hero-badge">
-                    <img src="images/Singapore-Map-Flag.png" alt="Singapore Flag" class="hero-badge-img" />
-                    <span class="hero-badge-text">Complete History</span>
+                    <img src="images/Singapore-Map-Flag.png" alt="Singapore Flag" class="hero-badge-img" loading="eager" decoding="async" />
+                    <span class="hero-badge-text">Singapore</span>
                 </div>
                 <p class="hero-eyebrow">1981 – 2026</p>
                 <h1 id="heroTitle"><span class="hero-highlight">Interactive</span> Timeline</h1>
                 <p class="hero-subtitle">The Complete History of Singapore's Internet</p>
                 <div class="hero-divider"></div>
-                <p class="hero-description">
-                    Explore every major milestone in Singapore's digital transformation —
-                    from the first BITNET connection to Smart Nation 2.0.
-                </p>
+                <p class="hero-description">Explore every major milestone in Singapore's digital transformation — from the first BITNET connection to Smart Nation 2.0.</p>
                 <div class="hero-actions">
                     <a href="#timelineFull" class="btn btn-primary">View All Events</a>
                     <a href="index.html" class="btn btn-secondary">Back to Home</a>
@@ -79,8 +75,8 @@
             </div>
         </section>
 
-        <!-- ===== FULL TIMELINE ===== -->
-        <section class="section" id="timelineFull" aria-labelledby="timelineTitle">
+        <!-- Full Timeline -->
+        <section class="section scroll-animate" id="timelineFull" aria-labelledby="timelineTitle">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Chronology</span>
@@ -93,10 +89,9 @@
                     <p class="loading-message">Loading full timeline...</p>
                 </div>
 
-                <!-- Sources Box -->
                 <div class="sources-box">
                     <p>
-                        📌 <strong>Sources:</strong> GovTech Singapore, IMDA, Smart Nation Singapore, NUS, PMO.
+                        <strong>Sources:</strong> GovTech Singapore, IMDA, Smart Nation Singapore, NUS, PMO.
                         All claims are cited with original sources.
                     </p>
                 </div>
@@ -105,20 +100,18 @@
 
     </main>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="site-footer" role="contentinfo">
         <div class="container footer-inner">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="images/icon.png" alt="Singapore Flag" class="footer-logo-img" />
+                    <img src="images/icon.png" alt="Singapore Flag" class="footer-logo-img" loading="lazy" decoding="async" />
                     <span>Singapore Connected</span>
                 </div>
                 <p>A web project tracing Singapore's internet history from 1981 to 2026.</p>
                 <div class="footer-icons">
-                    <!-- Updated to use icon-1.png -->
-                    <img src="images/icon-1.png" alt="Singapore Institute of Management Logo" class="footer-icon" />
-                    <img src="images/icon.png" alt="Singapore Flag Icon" class="footer-icon" />
-                    <span>© 2026</span>
+                    <img src="images/icon-1.png" alt="SIM Logo" class="footer-icon" loading="lazy" decoding="async" />
+                    <img src="images/icon.png" alt="Singapore Flag" class="footer-icon" loading="lazy" decoding="async" />
+                    <span>&copy; 2026</span>
                 </div>
             </div>
             <div class="footer-col">
@@ -141,16 +134,16 @@
         </div>
         <div class="footer-bottom">
             <div class="container">
-                <p>All historical claims cited. Sources available in each timeline entry.</p>
+                <p>All historical claims cited. Sources available in <a href="timeline.html">Timeline</a>.</p>
             </div>
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
     <script src="js/validator.js"></script>
     <script src="js/renderer.js"></script>
     <script src="js/router.js"></script>
     <script src="js/app.js"></script>
-
 </body>
 </html>
