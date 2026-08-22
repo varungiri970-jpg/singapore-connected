@@ -3,56 +3,51 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Singapore Connected — The Evolution of the Internet in Singapore from 1981 to 2026." />
-    <title>Singapore Connected — Evolution of the Internet</title>
-
-    <!-- FAVICON — using favicon.ico -->
+    <meta name="description" content="Singapore Connected — Evolution of the Internet — Singapore Connected. Trace Singapore's internet history from 1981 to 2026." />
+    <meta name="theme-color" content="#ED2939" />
+    <meta property="og:title" content="Singapore Connected — Evolution of the Internet — Singapore Connected" />
+    <meta property="og:description" content="Trace Singapore's digital journey from BITNET in 1987 to Smart Nation 2.0 in 2026." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/hero-home.jpg" />
+    <title>Singapore Connected — Evolution of the Internet — Singapore Connected</title>
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
-
-    <!-- Google Fonts — Playfair Display for premium serif headings + Inter for body -->
+    <link rel="apple-touch-icon" href="images/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+    <a href="#mainContent" class="skip-link">Skip to main content</a>
+    <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
 
-    <!-- ===== HEADER — Premium Red & White ===== -->
     <header class="site-header" role="banner" aria-label="Site header">
         <div class="container header-inner">
             <div class="logo">
                 <a href="index.html" aria-label="Singapore Connected home">
-                    <!-- Logo Icon -->
-                    <img src="images/icon.png" alt="Singapore Flag Logo" class="logo-img" />
+                    <img src="images/icon.png" alt="Singapore Flag Logo" class="logo-img" loading="eager" decoding="async" />
                     <span class="logo-text">Singapore <span class="logo-highlight">Connected</span></span>
                 </a>
             </div>
-
-            <!-- Desktop Navigation -->
             <nav class="nav-desktop" aria-label="Main navigation">
                 <ul>
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                     <li><a href="origins.html">Origins</a></li>
                     <li><a href="growth.html">Growth</a></li>
                     <li><a href="smart-nation.html">Smart Nation</a></li>
                     <li><a href="timeline.html">Timeline</a></li>
                 </ul>
             </nav>
-
-            <!-- Hamburger Menu Button -->
             <button class="hamburger" id="hamburgerBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Toggle navigation menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
         </div>
-
-        <!-- Mobile Navigation -->
         <nav class="nav-mobile" id="mobileNav" aria-label="Mobile navigation" hidden>
             <ul>
-                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="index.html" class="active" aria-current="page">Home</a></li>
                 <li><a href="origins.html">Origins</a></li>
                 <li><a href="growth.html">Growth</a></li>
                 <li><a href="smart-nation.html">Smart Nation</a></li>
@@ -61,25 +56,18 @@
         </nav>
     </header>
 
-    <main>
-
-        <!-- ===== HERO SECTION — Premium Red & White ===== -->
+    <main id="mainContent">
         <section class="hero hero-home" aria-labelledby="heroTitle">
-            <div class="hero-pattern"></div>
-            <div class="container hero-content">
-                <!-- Singapore Flag Badge -->
+            <div class="container hero-content scroll-animate">
                 <div class="hero-badge">
-                    <img src="images/Singapore-Map-Flag.png" alt="Singapore Flag" class="hero-badge-img" />
+                    <img src="images/Singapore-Map-Flag.png" alt="Singapore Flag" class="hero-badge-img" loading="eager" decoding="async" />
                     <span class="hero-badge-text">Singapore</span>
                 </div>
-
+                <p class="hero-eyebrow"></p>
                 <h1 id="heroTitle">Singapore <span class="hero-highlight">Connected</span></h1>
                 <p class="hero-subtitle">The Evolution of the Internet in Singapore</p>
                 <div class="hero-divider"></div>
-                <p class="hero-description">
-                    From academic networks in 1987 to 5G and Smart Nation in 2026 —
-                    explore the digital journey of one of the world's most connected countries.
-                </p>
+                <p class="hero-description">From academic networks in 1987 to 5G and Smart Nation in 2026 — explore the digital journey of one of the world's most connected countries.</p>
                 <div class="hero-actions">
                     <a href="#timeline" class="btn btn-primary">Explore the Timeline</a>
                     <a href="#stats" class="btn btn-secondary">Key Statistics</a>
@@ -87,8 +75,8 @@
             </div>
         </section>
 
-        <!-- ===== INTRODUCTION ===== -->
-        <section class="section introduction" aria-labelledby="introTitle">
+        <!-- Introduction -->
+        <section class="section introduction scroll-animate" aria-labelledby="introTitle">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">About This Project</span>
@@ -97,23 +85,9 @@
                 </div>
                 <div class="intro-grid">
                     <div class="intro-text">
-                        <p>
-                            Singapore's transformation from a small island nation to a global digital
-                            powerhouse is one of the most remarkable stories in technology history.
-                            In just four decades, the country built a world-class digital infrastructure
-                            that now supports one of the highest internet penetration rates and fastest
-                            broadband speeds on the planet.
-                        </p>
-                        <p>
-                            This website traces that journey — from the first BITNET connection at NUS
-                            in 1987, through the commercial internet boom of the 1990s, the broadband
-                            revolution of the 2000s, and the Smart Nation vision that continues to shape
-                            Singapore's digital future today.
-                        </p>
-                        <p class="intro-cta">
-                            <strong>Explore the eras below</strong> to discover how Singapore became
-                            a global technology leader.
-                        </p>
+                        <p>Singapore's transformation from a small island nation to a global digital powerhouse is one of the most remarkable stories in technology history. In just four decades, the country built a world-class digital infrastructure that now supports one of the highest internet penetration rates and fastest broadband speeds on the planet.</p>
+                        <p>This website traces that journey — from the first BITNET connection at NUS in 1987, through the commercial internet boom of the 1990s, the broadband revolution of the 2000s, and the Smart Nation vision that continues to shape Singapore's digital future today.</p>
+                        <p class="intro-cta"><strong>Explore the eras below</strong> to discover how Singapore became a global technology leader.</p>
                     </div>
                     <div class="intro-stats-preview">
                         <div class="stat-mini">
@@ -133,8 +107,8 @@
             </div>
         </section>
 
-        <!-- ===== NAVIGATION CARDS ===== -->
-        <section class="section section-alt nav-cards-section" aria-labelledby="navCardsTitle">
+        <!-- Nav Cards -->
+        <section class="section section-alt nav-cards-section scroll-animate" aria-labelledby="navCardsTitle">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">Explore the Eras</span>
@@ -142,40 +116,40 @@
                     <div class="section-divider"></div>
                 </div>
                 <div class="nav-cards">
-                    <a href="origins.html" class="nav-card">
-                        <div class="nav-card-icon">📡</div>
+                    <a href="origins.html" class="nav-card scroll-animate delay-1">
+                        <div class="nav-card-icon">&#128225;</div>
                         <h3>Origins</h3>
                         <p class="nav-card-period">1981 – 1996</p>
                         <p class="nav-card-desc">From BITNET to the first commercial ISPs</p>
-                        <span class="nav-card-arrow">→</span>
+                        <span class="nav-card-arrow">&rarr;</span>
                     </a>
-                    <a href="growth.html" class="nav-card">
-                        <div class="nav-card-icon">🌐</div>
+                    <a href="growth.html" class="nav-card scroll-animate delay-2">
+                        <div class="nav-card-icon">&#127760;</div>
                         <h3>Growth</h3>
                         <p class="nav-card-period">1997 – 2009</p>
                         <p class="nav-card-desc">Broadband, wireless, and digital identity</p>
-                        <span class="nav-card-arrow">→</span>
+                        <span class="nav-card-arrow">&rarr;</span>
                     </a>
-                    <a href="smart-nation.html" class="nav-card">
-                        <div class="nav-card-icon">🏙️</div>
+                    <a href="smart-nation.html" class="nav-card scroll-animate delay-3">
+                        <div class="nav-card-icon">&#127751;</div>
                         <h3>Smart Nation</h3>
                         <p class="nav-card-period">2010 – 2026</p>
                         <p class="nav-card-desc">Fibre, AI, 5G, and the digital future</p>
-                        <span class="nav-card-arrow">→</span>
+                        <span class="nav-card-arrow">&rarr;</span>
                     </a>
-                    <a href="timeline.html" class="nav-card">
-                        <div class="nav-card-icon">📅</div>
+                    <a href="timeline.html" class="nav-card scroll-animate delay-4">
+                        <div class="nav-card-icon">&#128197;</div>
                         <h3>Full Timeline</h3>
                         <p class="nav-card-period">1981 – 2026</p>
                         <p class="nav-card-desc">Interactive view of all milestones</p>
-                        <span class="nav-card-arrow">→</span>
+                        <span class="nav-card-arrow">&rarr;</span>
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== TIMELINE PREVIEW ===== -->
-        <section class="section" id="timeline" aria-labelledby="timelineTitle">
+        <!-- Timeline Preview -->
+        <section class="section scroll-animate" id="timeline" aria-labelledby="timelineTitle">
             <div class="container">
                 <div class="section-header">
                     <span class="section-tag">History in Motion</span>
@@ -187,16 +161,16 @@
                     <p class="loading-message">Loading timeline...</p>
                 </div>
                 <div class="text-center" style="margin-top: 2rem;">
-                    <a href="timeline.html" class="btn btn-secondary">View Full Timeline →</a>
+                    <a href="timeline.html" class="btn btn-secondary">View Full Timeline &rarr;</a>
                 </div>
             </div>
         </section>
 
-        <!-- ===== STATISTICS ===== -->
-        <section class="section stats-section" id="stats" aria-labelledby="statsTitle">
+        <!-- Statistics -->
+        <section class="section stats-section scroll-animate" id="stats" aria-labelledby="statsTitle">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Data & Insights</span>
+                    <span class="section-tag">Data &amp; Insights</span>
                     <h2 id="statsTitle">Singapore by the Numbers</h2>
                     <div class="section-divider"></div>
                     <p class="section-subtitle">Key statistics from Singapore's digital transformation</p>
@@ -210,26 +184,24 @@
 
     </main>
 
-    <!-- ===== FOOTER — Premium Dark Red ===== -->
     <footer class="site-footer" role="contentinfo">
         <div class="container footer-inner">
             <div class="footer-col">
                 <div class="footer-logo">
-                    <img src="images/icon.png" alt="Singapore Flag" class="footer-logo-img" />
+                    <img src="images/icon.png" alt="Singapore Flag" class="footer-logo-img" loading="lazy" decoding="async" />
                     <span>Singapore Connected</span>
                 </div>
                 <p>A web project tracing Singapore's internet history from 1981 to 2026.</p>
                 <div class="footer-icons">
-                    <!-- Updated to use icon-1.png -->
-                    <img src="images/icon-1.png" alt="Singapore Institute of Management Logo" class="footer-icon" />
-                    <img src="images/icon.png" alt="Singapore Flag Icon" class="footer-icon" />
-                    <span>© 2026</span>
+                    <img src="images/icon-1.png" alt="SIM Logo" class="footer-icon" loading="lazy" decoding="async" />
+                    <img src="images/icon.png" alt="Singapore Flag" class="footer-icon" loading="lazy" decoding="async" />
+                    <span>&copy; 2026</span>
                 </div>
             </div>
             <div class="footer-col">
                 <h3>Sources</h3>
                 <ul>
-                    <li><a href="https://www.tech.gov.sg" target="_blank" rel="noopener">GovTech Singapore</a></li>
+                    <li><a href="https://www.tech.gov.sg" target="_blank" rel="noopener">GovTech</a></li>
                     <li><a href="https://www.imda.gov.sg" target="_blank" rel="noopener">IMDA</a></li>
                     <li><a href="https://www.smartnation.gov.sg" target="_blank" rel="noopener">Smart Nation</a></li>
                     <li><a href="https://www.nus.edu.sg" target="_blank" rel="noopener">NUS</a></li>
@@ -251,11 +223,11 @@
         </div>
     </footer>
 
-    <!-- ===== SCRIPTS ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
     <script src="js/validator.js"></script>
     <script src="js/renderer.js"></script>
     <script src="js/router.js"></script>
     <script src="js/app.js"></script>
-
 </body>
 </html>
