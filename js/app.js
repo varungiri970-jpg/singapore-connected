@@ -1,5 +1,5 @@
 /* ============================================================
-   APP — Premium Edition
+   APP — Premium Edition (Mobile-Friendly)
    Fetch, validate, render + scroll animations + counters
    ============================================================ */
 
@@ -24,64 +24,141 @@
     async function fetchJSON(url) {
         try {
             const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 8000);
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
             const response = await fetch(url, { signal: controller.signal });
             clearTimeout(timeoutId);
             if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
             return await response.json();
         } catch (error) {
-            console.error(`Failed to fetch ${url}:`, error.message);
+            console.error('Failed to fetch ${url}:', error.message);
             return null;
         }
     }
 
     async function renderTimelineSection(container, limit) {
-        if (!container) return;
-        container.innerHTML = '<p class="loading-message">Loading timeline...</p>';
-        const data = await fetchJSON('data/timeline.json');
-        if (!data || !Array.isArray(data.timeline)) {
-            container.innerHTML = `<p class="error-message">Timeline data could not be loaded.</p>`;
+        if (!container) {
+            console.warn('Timeline container not found');
             return;
         }
+
+        // Show loading state
+        container.innerHTML = '<p class="loading-message">Loading timeline...</p>';
+
+        const data = await fetchJSON('data/timeline.json');
+
+        // Handle fetch errors
+        if (!data || !Array.isArray(data.timeline)) {
+            container.innerHTML = `
+                <p class="error-message">
+                    ⚠️ Timeline data could not be loaded.
+                    <br><small>Please check your connection and refresh.</small>
+                </p>
+            `;
+            return;
+        }
+
+        // Validate timeline data before rendering
         const validationResult = window.validateTimelineData(data.timeline);
-        if (!validationResult.valid) console.warn('Timeline validation warnings:', validationResult.errors);
-        else console.log(`Timeline validation passed (${validationResult.count} items)`);
+        if (!validationResult.valid) {
+            console.warn('Timeline validation warnings:', validationResult.errors);
+        } else {
+            console.log('Timeline validation passed (${validationResult.count} items)');
+        }
 
         const page = getPage();
         let items = [...data.timeline];
-        if (page !== 'home' && page !== 'timeline') items = items.filter(item => item.page === page);
+
+        // Filter by page for inner pages (not home, not full timeline)
+        if (page !== 'home' && page !== 'timeline') {
+            items = items.filter(item => item.page === page);
+            console.log('Filtered to ${items.length} items for "${page}" page');
+        }
+
+        // Sort items by year (ascending)
         items.sort((a, b) => a.year - b.year);
 
+        // For home preview: pick a balanced cross-era selection
         if (limit && items.length > limit) {
             const previewYears = [1981, 1987, 1994, 1997, 2006, 2014, 2024];
             const preview = items.filter(item => previewYears.includes(item.year));
             items = preview.length >= limit ? preview.slice(0, limit) : items.slice(0, limit);
         }
+
+        // Handle empty results
         if (items.length === 0) {
-            container.innerHTML = `<p class="error-message">No timeline items found for this page.</p>`;
+            container.innerHTML = `
+                <p class="error-message">
+                    ⚠️ No timeline items found for this page.
+                </p>
+            `;
             return;
         }
+
+        // Render using the custom template engine
         container.innerHTML = window.renderTimeline(items);
-        console.log(`Rendered ${items.length} timeline items on "${page}" page`);
-        initScrollAnimations();
+        console.log('Rendered ${items.length} timeline items on "${page}" page');
+
+        // Trigger scroll animations for new content
+        if (typeof initScrollAnimations === 'function') {
+            initScrollAnimations();
+        }
     }
 
     async function renderStatisticsSection(container) {
-        if (!container) return;
-        container.innerHTML = '<p class="loading-message">Loading statistics...</p>';
-        const data = await fetchJSON('data/statistics.json');
-        if (!data || !Array.isArray(data.statistics) || data.statistics.length === 0) {
-            container.innerHTML = `<p class="error-message">Statistics data could not be loaded.</p>`;
+        if (!container) {
+            console.warn('Statistics container not found');
             return;
         }
+
+        container.innerHTML = '<p class="loading-message">Loading statistics...</p>';
+
+        const data = await fetchJSON('data/statistics.json');
+
+        if (!data || !Array.isArray(data.statistics) || data.statistics.length === 0) {
+            container.innerHTML = `
+                <p class="error-message">
+                    ⚠️ Statistics data could not be loaded.
+                </p>
+            `;
+            return;
+        }
+
         const validationResult = window.validateStatisticsData(data.statistics);
-        if (!validationResult.valid) console.warn('Statistics validation warnings:', validationResult.errors);
-        else console.log(`Statistics validation passed (${data.statistics.length} items)`);
+        if (!validationResult.valid) {
+            console.warn('Statistics validation warnings:', validationResult.errors);
+        } else {
+            console.log('Statistics validation passed (${data.statistics.length} items)');
+        }
 
         container.innerHTML = window.renderStatistics(data.statistics);
-        console.log(`Rendered ${data.statistics.length} statistics items`);
-        setTimeout(initCounters, 100);
-        initScrollAnimations();
+        console.log('Rendered ${data.statistics.length} statistics items');
+
+        // Animate counters
+        setTimeout(() => {
+            document.querySelectorAll('.stat-number[data-value]').forEach(counter => {
+                const target = counter.getAttribute('data-value');
+                if (!target) return;
+                const num = parseFloat(target);
+                if (isNaN(num)) return;
+                const suffix = target.replace(/[0-9.]/g, '');
+                const duration = CONFIG.counterDuration;
+                const start = performance.now();
+                function update(now) {
+                    const elapsed = now - start;
+                    const progress = Math.min(elapsed / duration, 1);
+                    const ease = 1 - Math.pow(1 - progress, 3);
+                    const current = (num * ease).toFixed(1).replace(/\.0$/, '');
+                    counter.textContent = current + suffix;
+                    if (progress < 1) requestAnimationFrame(update);
+                    else counter.textContent = target;
+                }
+                requestAnimationFrame(update);
+            });
+        }, 200);
+
+        if (typeof initScrollAnimations === 'function') {
+            initScrollAnimations();
+        }
     }
 
     function initScrollAnimations() {
@@ -92,58 +169,59 @@
                     observer.unobserve(entry.target);
                 }
             });
-        }, { root: null, rootMargin: `0px 0px -${CONFIG.animationOffset}px 0px`, threshold: 0.1 });
-        document.querySelectorAll('.scroll-animate').forEach(el => observer.observe(el));
-    }
+        }, {
+            root: null,
+            rootMargin: '0px 0px -60px 0px',
+            threshold: 0.1
+        });
 
-    function initCounters() {
-        const counters = document.querySelectorAll('.stat-number[data-value]');
-        counters.forEach(counter => {
-            const target = counter.getAttribute('data-value');
-            if (!target) return;
-            const num = parseFloat(target);
-            if (isNaN(num)) return;
-            const suffix = target.replace(/[0-9.]/g, '');
-            const duration = CONFIG.counterDuration;
-            const start = performance.now();
-            function update(now) {
-                const elapsed = now - start;
-                const progress = Math.min(elapsed / duration, 1);
-                const ease = 1 - Math.pow(1 - progress, 3);
-                const current = (num * ease).toFixed(1).replace(/\.0$/, '');
-                counter.textContent = current + suffix;
-                if (progress < 1) requestAnimationFrame(update);
-                else counter.textContent = target;
-            }
-            requestAnimationFrame(update);
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
         });
     }
 
     function initBackToTop() {
         const btn = document.getElementById('backToTop');
         if (!btn) return;
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > CONFIG.backToTopThreshold) btn.classList.add('is-visible');
-            else btn.classList.remove('is-visible');
+            if (window.scrollY > CONFIG.backToTopThreshold) {
+                btn.classList.add('is-visible');
+            } else {
+                btn.classList.remove('is-visible');
+            }
         }, { passive: true });
-        btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
     }
 
     function initHeaderScroll() {
         const header = document.querySelector('.site-header');
         if (!header) return;
+
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 20) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
+            if (window.scrollY > 20) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         }, { passive: true });
     }
 
+    // ============================================================
+    // MAIN INITIALISATION
+    // ============================================================
+
     function initApp() {
         const page = getPage();
+
         const timelinePreview = document.getElementById('timelinePreview');
         const timelineContainer = document.getElementById('timelineContainer');
         const statsContainer = document.getElementById('statsContainer');
-        console.log(`Singapore Connected Premium — "${page}" page initialised`);
+
+        console.log('🚀 Singapore Connected — "${page}" page loaded');
 
         if (page === 'home') {
             renderTimelineSection(timelinePreview, 6);
@@ -153,11 +231,21 @@
         } else {
             renderTimelineSection(timelineContainer, null);
         }
-        initScrollAnimations();
+
+        // Initialize animations
+        setTimeout(initScrollAnimations, 300);
         initBackToTop();
         initHeaderScroll();
+
+        console.log('📦 Template engine: Custom JavaScript renderer (renderer.js)');
+        console.log('📊 Data source: data/timeline.json');
     }
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initApp);
-    else initApp();
+    // --- Run on DOM ready ---
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initApp);
+    } else {
+        initApp();
+    }
+
 })();
