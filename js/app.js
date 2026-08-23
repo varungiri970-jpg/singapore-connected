@@ -1,5 +1,5 @@
 /* ============================================================
-   APP — COMPLETE SELF-CONTAINED VERSION (Mobile Fix)
+   APP — COMPLETE SELF-CONTAINED VERSION (Mobile Fix v2)
    No external dependencies — all in one file
    ============================================================ */
 
@@ -91,16 +91,41 @@
                 </button>
             </div>
         `;
+        revealAncestors(container);
     }
 
     function showLoading(container) {
         container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #6A5A5A;">⏳ Loading timeline...</p>';
     }
 
+    // Force any wrapping .scroll-animate ancestor to be visible.
+    // Guards against the reveal-on-scroll observer never firing for this
+    // element (e.g. it sat mid-viewport before content loaded and grew
+    // afterward, or the intersection event was otherwise missed).
+    function revealAncestors(el) {
+        let node = el;
+        while (node && node !== document.body) {
+            if (node.classList && node.classList.contains('scroll-animate')) {
+                node.classList.add('is-visible');
+            }
+            node = node.parentElement;
+        }
+    }
+
+    // Real cache-busting: many mobile carriers and intermediary proxies
+    // cache GET responses keyed by URL and ignore Cache-Control request
+    // headers (those only govern the local browser's own HTTP cache).
+    // Putting a changing value directly in the URL guarantees a fresh
+    // response regardless of any proxy sitting in between.
+    function bust(url) {
+        const sep = url.includes('?') ? '&' : '?';
+        return `${url}${sep}_=${Date.now()}`;
+    }
+
     async function fetchJSON(url) {
         try {
             console.log('📡 Fetching:', url);
-            const response = await fetch(url, {
+            const response = await fetch(bust(url), {
                 cache: 'no-store',
                 headers: { 'Cache-Control': 'no-cache' }
             });
@@ -148,13 +173,16 @@
 
         if (items.length === 0) {
             container.innerHTML = '<p class="error-message">No timeline items found for this page.</p>';
+            revealAncestors(container);
             return;
         }
 
         try {
             container.innerHTML = renderTimeline(items);
+            revealAncestors(container);
             console.log('✅ Rendered', items.length, 'items');
         } catch (e) {
+            console.error('Render error:', e);
             showError(container, 'Error rendering: ' + e.message);
         }
     }
@@ -168,13 +196,22 @@
 
         if (!data || !data.statistics || data.statistics.length === 0) {
             container.innerHTML = '<p class="error-message">Statistics could not be loaded.</p>';
+            revealAncestors(container);
             return;
         }
 
         container.innerHTML = renderStatistics(data.statistics);
+        revealAncestors(container);
     }
 
     function initScrollAnimations() {
+        const targets = document.querySelectorAll('.scroll-animate');
+
+        if (!('IntersectionObserver' in window)) {
+            targets.forEach(el => el.classList.add('is-visible'));
+            return;
+        }
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -184,9 +221,17 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.scroll-animate').forEach(el => {
-            observer.observe(el);
-        });
+        targets.forEach(el => observer.observe(el));
+
+        // Safety net: if the observer never fires for some element on some
+        // device (viewport quirks, content resizing after observation
+        // starts, etc.), force it visible after a few seconds so nothing
+        // is ever permanently stuck at opacity: 0.
+        setTimeout(() => {
+            document.querySelectorAll('.scroll-animate:not(.is-visible)').forEach(el => {
+                el.classList.add('is-visible');
+            });
+        }, 4000);
     }
 
     function initBackToTop() {
@@ -213,21 +258,22 @@
     function initApp() {
         const page = getPage();
         console.log('🚀 Singapore Connected — page:', page);
+        console.log('📱 Device:', window.innerWidth < 768 ? 'Mobile' : 'Desktop');
 
         const timelinePreview = document.getElementById('timelinePreview');
         const timelineContainer = document.getElementById('timelineContainer');
         const statsContainer = document.getElementById('statsContainer');
 
-        console.log('📱 Device:', window.innerWidth < 768 ? 'Mobile' : 'Desktop');
-
+        // Each section's fetch/render is isolated in its own promise chain
+        // so one failure can never block or freeze the rest of the page.
         if (page === 'home') {
-            renderTimelineSection(timelinePreview, 6);
-            renderStatisticsSection(statsContainer);
+            renderTimelineSection(timelinePreview, 6).catch(err => console.error('Timeline preview failed:', err));
+            renderStatisticsSection(statsContainer).catch(err => console.error('Statistics failed:', err));
         } else {
-            renderTimelineSection(timelineContainer, null);
+            renderTimelineSection(timelineContainer, null).catch(err => console.error('Timeline failed:', err));
         }
 
-        setTimeout(initScrollAnimations, 300);
+        initScrollAnimations();
         initBackToTop();
         initHeaderScroll();
     }
