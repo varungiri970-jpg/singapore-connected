@@ -1,6 +1,5 @@
 /* ============================================================
-   APP — Premium Edition (Mobile-Friendly)
-   Fetch, validate, render + scroll animations + counters
+   APP — Premium Edition (Mobile-Friendly with Error Display)
    ============================================================ */
 
 (function() {
@@ -23,14 +22,21 @@
 
     async function fetchJSON(url) {
         try {
+            console.log(`[fetchJSON] Fetching: ${url}`);
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), 10000);
             const response = await fetch(url, { signal: controller.signal });
             clearTimeout(timeoutId);
-            if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            return await response.json();
+            
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            
+            const data = await response.json();
+            console.log(`[fetchJSON] Success: ${url}`);
+            return data;
         } catch (error) {
-            console.error('Failed to fetch ${url}:', error.message);
+            console.error(`[fetchJSON] Failed to fetch ${url}:`, error.message);
             return null;
         }
     }
@@ -41,84 +47,92 @@
             return;
         }
 
-        // Show loading state
-        container.innerHTML = '<p class="loading-message">Loading timeline...</p>';
+        // Show loading state with clear message
+        container.innerHTML = '<p class="loading-message">⏳ Loading timeline...</p>';
 
         const data = await fetchJSON('data/timeline.json');
 
-        // Handle fetch errors
+        // Handle fetch errors — SHOW ERROR ON SCREEN
         if (!data || !Array.isArray(data.timeline)) {
             container.innerHTML = `
-                <p class="error-message">
-                    ⚠️ Timeline data could not be loaded.
-                    <br><small>Please check your connection and refresh.</small>
-                </p>
+                <div class="error-message" style="padding: 2rem; text-align: center; background: #FFF0F0; border-radius: 12px; border: 1px solid #ED2939;">
+                    <p style="font-size: 1.2rem; font-weight: 600; color: #ED2939;">⚠️ Timeline data could not be loaded</p>
+                    <p style="color: #5A4A4A; margin-top: 0.5rem;">Please check your internet connection and refresh the page.</p>
+                    <p style="color: #8A7A7A; font-size: 0.85rem; margin-top: 0.5rem;">If the problem persists, try clearing your browser cache.</p>
+                    <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1.5rem; background: #ED2939; color: white; border: none; border-radius: 6px; cursor: pointer;">Refresh Page</button>
+                </div>
             `;
             return;
         }
 
-        // Validate timeline data before rendering
+        // Validate timeline data
         const validationResult = window.validateTimelineData(data.timeline);
         if (!validationResult.valid) {
             console.warn('Timeline validation warnings:', validationResult.errors);
         } else {
-            console.log('Timeline validation passed (${validationResult.count} items)');
+            console.log(`Timeline validation passed (${validationResult.count} items)`);
         }
 
         const page = getPage();
         let items = [...data.timeline];
 
-        // Filter by page for inner pages (not home, not full timeline)
+        // Filter by page
         if (page !== 'home' && page !== 'timeline') {
             items = items.filter(item => item.page === page);
-            console.log('Filtered to ${items.length} items for "${page}" page');
+            console.log(`Filtered to ${items.length} items for "${page}" page`);
         }
 
-        // Sort items by year (ascending)
+        // Sort by year
         items.sort((a, b) => a.year - b.year);
 
-        // For home preview: pick a balanced cross-era selection
+        // Limit for home preview
         if (limit && items.length > limit) {
             const previewYears = [1981, 1987, 1994, 1997, 2006, 2014, 2024];
             const preview = items.filter(item => previewYears.includes(item.year));
             items = preview.length >= limit ? preview.slice(0, limit) : items.slice(0, limit);
         }
 
-        // Handle empty results
         if (items.length === 0) {
             container.innerHTML = `
-                <p class="error-message">
+                <p class="error-message" style="text-align: center; padding: 2rem;">
                     ⚠️ No timeline items found for this page.
                 </p>
             `;
             return;
         }
 
-        // Render using the custom template engine
-        container.innerHTML = window.renderTimeline(items);
-        console.log('Rendered ${items.length} timeline items on "${page}" page');
+        // Render using the template engine
+        try {
+            container.innerHTML = window.renderTimeline(items);
+            console.log(`✅ Rendered ${items.length} timeline items on "${page}" page`);
 
-        // Trigger scroll animations for new content
-        if (typeof initScrollAnimations === 'function') {
-            initScrollAnimations();
+            // Re-trigger scroll animations
+            if (typeof initScrollAnimations === 'function') {
+                setTimeout(initScrollAnimations, 200);
+            }
+        } catch (renderError) {
+            console.error('Render error:', renderError);
+            container.innerHTML = `
+                <div class="error-message" style="padding: 2rem; text-align: center; background: #FFF0F0; border-radius: 12px; border: 1px solid #ED2939;">
+                    <p style="color: #ED2939; font-weight: 600;">⚠️ Error rendering timeline</p>
+                    <p style="color: #5A4A4A;">${renderError.message}</p>
+                </div>
+            `;
         }
     }
 
     async function renderStatisticsSection(container) {
-        if (!container) {
-            console.warn('Statistics container not found');
-            return;
-        }
+        if (!container) return;
 
-        container.innerHTML = '<p class="loading-message">Loading statistics...</p>';
+        container.innerHTML = '<p class="loading-message">⏳ Loading statistics...</p>';
 
         const data = await fetchJSON('data/statistics.json');
 
         if (!data || !Array.isArray(data.statistics) || data.statistics.length === 0) {
             container.innerHTML = `
-                <p class="error-message">
-                    ⚠️ Statistics data could not be loaded.
-                </p>
+                <div class="error-message" style="padding: 1.5rem; text-align: center; background: #FFF0F0; border-radius: 12px; border: 1px solid #ED2939;">
+                    <p style="color: #ED2939;">⚠️ Statistics data could not be loaded</p>
+                </div>
             `;
             return;
         }
@@ -126,39 +140,10 @@
         const validationResult = window.validateStatisticsData(data.statistics);
         if (!validationResult.valid) {
             console.warn('Statistics validation warnings:', validationResult.errors);
-        } else {
-            console.log('Statistics validation passed (${data.statistics.length} items)');
         }
 
         container.innerHTML = window.renderStatistics(data.statistics);
-        console.log('Rendered ${data.statistics.length} statistics items');
-
-        // Animate counters
-        setTimeout(() => {
-            document.querySelectorAll('.stat-number[data-value]').forEach(counter => {
-                const target = counter.getAttribute('data-value');
-                if (!target) return;
-                const num = parseFloat(target);
-                if (isNaN(num)) return;
-                const suffix = target.replace(/[0-9.]/g, '');
-                const duration = CONFIG.counterDuration;
-                const start = performance.now();
-                function update(now) {
-                    const elapsed = now - start;
-                    const progress = Math.min(elapsed / duration, 1);
-                    const ease = 1 - Math.pow(1 - progress, 3);
-                    const current = (num * ease).toFixed(1).replace(/\.0$/, '');
-                    counter.textContent = current + suffix;
-                    if (progress < 1) requestAnimationFrame(update);
-                    else counter.textContent = target;
-                }
-                requestAnimationFrame(update);
-            });
-        }, 200);
-
-        if (typeof initScrollAnimations === 'function') {
-            initScrollAnimations();
-        }
+        console.log(`✅ Rendered ${data.statistics.length} statistics items`);
     }
 
     function initScrollAnimations() {
@@ -221,7 +206,8 @@
         const timelineContainer = document.getElementById('timelineContainer');
         const statsContainer = document.getElementById('statsContainer');
 
-        console.log('🚀 Singapore Connected — "${page}" page loaded');
+        console.log(`🚀 Singapore Connected — "${page}" page loaded`);
+        console.log(`📱 Device: ${window.innerWidth < 768 ? 'Mobile' : 'Desktop'}`);
 
         if (page === 'home') {
             renderTimelineSection(timelinePreview, 6);
@@ -232,13 +218,11 @@
             renderTimelineSection(timelineContainer, null);
         }
 
-        // Initialize animations
         setTimeout(initScrollAnimations, 300);
         initBackToTop();
         initHeaderScroll();
 
         console.log('📦 Template engine: Custom JavaScript renderer (renderer.js)');
-        console.log('📊 Data source: data/timeline.json');
     }
 
     // --- Run on DOM ready ---
