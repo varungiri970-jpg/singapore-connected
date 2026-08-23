@@ -1,10 +1,76 @@
 /* ============================================================
-   APP — Mobile-Fixed Version
-   Shows timeline with clear errors if something fails
+   APP — COMPLETE SELF-CONTAINED VERSION (Mobile Fix)
+   No external dependencies — all in one file
    ============================================================ */
 
 (function() {
     'use strict';
+
+    // ============================================================
+    // TEMPLATE ENGINE (built-in — no external dependency)
+    // ============================================================
+
+    function escapeHTML(str) {
+        if (str === null || str === undefined) return '';
+        const div = document.createElement('div');
+        div.textContent = String(str);
+        return div.innerHTML;
+    }
+
+    function getCategoryClass(category) {
+        const map = {
+            'Academic': 'academic',
+            'Commercial': 'commercial',
+            'Government': 'government',
+            'Infrastructure': 'infrastructure'
+        };
+        return map[category] || '';
+    }
+
+    function renderTimelineItem(item) {
+        const categoryClass = getCategoryClass(item.category);
+        const sourceHtml = item.sourceUrl
+            ? `<a href="${escapeHTML(item.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHTML(item.source || 'Source')}</a>`
+            : escapeHTML(item.source || '');
+
+        return `
+            <div class="timeline-item">
+                <div class="timeline-year">${escapeHTML(String(item.year))}</div>
+                <div class="timeline-content">
+                    <span class="tl-category ${categoryClass}">${escapeHTML(item.category || 'General')}</span>
+                    <h4>${escapeHTML(item.title)}</h4>
+                    <p>${escapeHTML(item.description || '')}</p>
+                    ${item.significance ? `<p class="tl-significance">${escapeHTML(item.significance)}</p>` : ''}
+                    <p class="tl-source">Source: ${sourceHtml}</p>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderTimeline(items) {
+        if (!items || !Array.isArray(items) || items.length === 0) {
+            return '<p class="error-message">No timeline items to display.</p>';
+        }
+        return items.map(item => renderTimelineItem(item)).join('');
+    }
+
+    function renderStatistics(items) {
+        if (!items || !Array.isArray(items) || items.length === 0) {
+            return '<p class="error-message">No statistics available.</p>';
+        }
+        return items.map(stat => `
+            <div class="stat-card">
+                <span class="stat-number">${escapeHTML(stat.value || '—')}</span>
+                <span class="stat-label">${escapeHTML(stat.label || '')}</span>
+                ${stat.year ? `<span class="stat-year">${escapeHTML(String(stat.year))}</span>` : ''}
+                ${stat.source ? `<span class="stat-source">Source: ${escapeHTML(stat.source)}</span>` : ''}
+            </div>
+        `).join('');
+    }
+
+    // ============================================================
+    // MAIN APP
+    // ============================================================
 
     function getPage() {
         const path = window.location.pathname;
@@ -15,32 +81,39 @@
         return 'home';
     }
 
-    async function fetchJSON(url) {
-        try {
-            console.log('📡 Fetching:', url);
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error('HTTP ' + response.status + ': ' + response.statusText);
-            }
-            const data = await response.json();
-            console.log('✅ Loaded:', url);
-            return data;
-        } catch (error) {
-            console.error('❌ Failed:', url, error.message);
-            return null;
-        }
-    }
-
     function showError(container, message) {
         container.innerHTML = `
             <div style="padding: 2rem; text-align: center; background: #FFF0F0; border-radius: 12px; border: 2px solid #ED2939;">
                 <p style="font-size: 1.2rem; font-weight: bold; color: #ED2939;">⚠️ ${message}</p>
-                <p style="color: #5A4A4A; margin-top: 0.5rem;">Please refresh or try again.</p>
+                <p style="color: #5A4A4A; margin-top: 0.5rem;">Please check your connection and refresh.</p>
                 <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 2rem; background: #ED2939; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;">
                     Refresh Page
                 </button>
             </div>
         `;
+    }
+
+    function showLoading(container) {
+        container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #6A5A5A;">⏳ Loading timeline...</p>';
+    }
+
+    async function fetchJSON(url) {
+        try {
+            console.log('📡 Fetching:', url);
+            const response = await fetch(url, {
+                cache: 'no-store',
+                headers: { 'Cache-Control': 'no-cache' }
+            });
+            if (!response.ok) {
+                throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+            }
+            const data = await response.json();
+            console.log('✅ Loaded:', url, '—', Object.keys(data));
+            return data;
+        } catch (error) {
+            console.error('❌ Failed to fetch', url, ':', error.message);
+            return null;
+        }
     }
 
     async function renderTimelineSection(container, limit) {
@@ -49,9 +122,8 @@
             return;
         }
 
-        container.innerHTML = '<p style="text-align: center; padding: 2rem; color: #6A5A5A;">⏳ Loading timeline...</p>';
+        showLoading(container);
 
-        // Try to load the JSON
         const data = await fetchJSON('data/timeline.json');
 
         if (!data || !data.timeline || !Array.isArray(data.timeline)) {
@@ -60,17 +132,14 @@
         }
 
         const page = getPage();
-        let items = data.timeline;
+        let items = [...data.timeline];
 
-        // Filter by page
         if (page !== 'home' && page !== 'timeline') {
             items = items.filter(item => item.page === page);
         }
 
-        // Sort by year
         items.sort((a, b) => a.year - b.year);
 
-        // Home page preview limit
         if (limit && items.length > limit) {
             const previewYears = [1981, 1987, 1994, 1997, 2006, 2014, 2024];
             const preview = items.filter(item => previewYears.includes(item.year));
@@ -78,13 +147,12 @@
         }
 
         if (items.length === 0) {
-            container.innerHTML = '<p class="error-message">No timeline items found.</p>';
+            container.innerHTML = '<p class="error-message">No timeline items found for this page.</p>';
             return;
         }
 
-        // Render using the renderer
         try {
-            container.innerHTML = window.renderTimeline(items);
+            container.innerHTML = renderTimeline(items);
             console.log('✅ Rendered', items.length, 'items');
         } catch (e) {
             showError(container, 'Error rendering: ' + e.message);
@@ -103,7 +171,7 @@
             return;
         }
 
-        container.innerHTML = window.renderStatistics(data.statistics);
+        container.innerHTML = renderStatistics(data.statistics);
     }
 
     function initScrollAnimations() {
@@ -138,22 +206,23 @@
         });
     }
 
-    // --- MAIN INIT ---
+    // ============================================================
+    // INIT
+    // ============================================================
+
     function initApp() {
         const page = getPage();
+        console.log('🚀 Singapore Connected — page:', page);
 
         const timelinePreview = document.getElementById('timelinePreview');
         const timelineContainer = document.getElementById('timelineContainer');
         const statsContainer = document.getElementById('statsContainer');
 
-        console.log('🚀 Singapore Connected — "' + page + '" page');
         console.log('📱 Device:', window.innerWidth < 768 ? 'Mobile' : 'Desktop');
 
         if (page === 'home') {
             renderTimelineSection(timelinePreview, 6);
             renderStatisticsSection(statsContainer);
-        } else if (page === 'timeline') {
-            renderTimelineSection(timelineContainer, null);
         } else {
             renderTimelineSection(timelineContainer, null);
         }
@@ -163,6 +232,7 @@
         initHeaderScroll();
     }
 
+    // --- Run ---
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initApp);
     } else {
