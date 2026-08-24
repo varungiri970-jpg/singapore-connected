@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,8,16&height=200&section=header&text=Singapore%20Connected&fontSize=72&fontColor=fff&animation=twinkling&fontAlignY=35&desc=The%20Evolution%20of%20the%20Internet%20in%20Singapore&descAlignY=55&descSize=15" width="100%"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,8,16&height=200&section=header&text=Singapore%20Connected&fontSize=72&fontColor=fff&animation=twinkling&fontAlignY=35&desc=Singapore%27s%20Digital%20Journey%20(1981%E2%80%932026)&descAlignY=55&descSize=15" width="100%"/>
 
 [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=20&pause=1000&color=E02A3E&center=true&vCenter=true&multiline=true&width=1600&height=60&lines=Singapore+Connected+%7C+1981%E2%80%932026+%7C+5+Pages+%7C+22+Milestones)](https://git.io/typing-svg)
 
@@ -18,10 +18,11 @@
 [![Responsive](https://img.shields.io/badge/Responsive-Yes-E02A3E?style=for-the-badge)]()
 [![Accessible](https://img.shields.io/badge/Accessible-WCAG%20AA-8B0000?style=for-the-badge)]()
 [![Status](https://img.shields.io/badge/Status-Production%20Ready-success?style=for-the-badge)]()
+[![User Feedback](https://img.shields.io/badge/User%20Feedback-5%2F5-brightgreen?style=for-the-badge)]()
 
 <br/>
 
-> **🌐 Singapore Connected** — An educational website tracing Singapore's internet history from the first BITNET connection in 1987 to 5G and Smart Nation 2.0 in 2026, with dynamic JSON-driven content and a fully responsive red and white design inspired by the Singapore flag.
+> **🌐 Singapore Connected** — An educational website tracing Singapore's internet history from the National Computer Board in 1981 to 5G and Smart Nation 2.0 in 2026, with dynamic JSON-driven content and a fully responsive red and white design inspired by the Singapore flag.
 
 <br/>
 
@@ -154,6 +155,28 @@ Singapore Connected               →   Dynamic JSON-driven timeline, responsive
 
 ---
 
+## 👥 User Testing & Feedback
+
+Five users tested the website. All rated navigation **5/5**.
+
+| User | Device | Feedback |
+|------|--------|----------|
+| User 1 | Desktop | Clear about internet history |
+| User 2 | Mobile | More visuals on homepage suggested |
+| User 3 | Mobile | "Good design, no changes required" |
+| User 4 | Desktop | "Clean design" |
+| User 5 | Mobile | Design good, content could be clearer |
+
+**Actions taken:**
+- Added glassmorphism overlay for better text readability
+- Enhanced homepage with statistics preview
+- Improved hero content clarity
+- Adjusted contrast for WCAG AA compliance
+
+📝 **Feedback Form:** https://forms.gle/PJz7v57D9GJXUCw4A
+
+---
+
 ## 🏗️ System Architecture
 
 ### 🧩 Component Summary
@@ -198,8 +221,6 @@ DOM: container.innerHTML = HTML
 
 ## 📸 Screenshots
 
-<div align="center">
-
 ### 🏠 Home Page
 ![Home Page](documents/Screenshot/Home-Page.png)
 
@@ -217,8 +238,6 @@ DOM: container.innerHTML = HTML
 
 ### 📱 Mobile Responsive
 ![Mobile Responsive](documents/Screenshot/Mobile-Responsive.png)
-
-</div>
 
 ---
 
@@ -279,6 +298,18 @@ singapore-connected/
 ├── 📄 .gitignore
 └── 📄 README.md                  # This file
 ```
+
+---
+
+## 🚀 Future Improvements
+
+- Add a REST API for dynamic data updates
+- Allow user contributions to the timeline
+- Add more interactive visualisations (charts, graphs)
+- Implement dark/light theme toggle
+- Add search and filter functionality
+- Add more historical photos and media
+- Integrate with a public API for real-time statistics
 
 ---
 
